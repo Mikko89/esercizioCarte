@@ -19,9 +19,9 @@ public class Main {
 			c=m.estraiCarta();
 			System.out.println("Carta estratta n° " +m.getcarteEstratte() +" : "+c.getFigura() +" di " +c.getSeme());
 		} 
-		while (m.getcarteEstratte()<=40);
+		while (c!=null);
 		
-		
+		System.out.println("Tutte le carte sono state estratte...");
 		s.close();
 		
 	}

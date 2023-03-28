@@ -7,7 +7,7 @@ public class Mazzo {
 	
 	Random rand=new Random();
 	
-	private int carteEstratte=0;
+	private int carteEstratte;
 	private String tipologia;
 	private ArrayList<Carta> elencoCarte = new ArrayList<>();
 	private String[] semiNapoletani= {"Bastoni","Coppe","Denari","Spade"};
@@ -17,6 +17,7 @@ public class Mazzo {
 	{
 		super();
 		this.tipologia=tipologia;
+		carteEstratte=0;
 		switch (tipologia) 
 		{
 			case "napoletane":
@@ -45,15 +46,23 @@ public class Mazzo {
 		Random r=new Random();
 		int pos;
 		Carta c;
-		do 
+		if(carteEstratte<elencoCarte.size())
 		{
-			pos=r.nextInt(elencoCarte.size());
-			c=elencoCarte.get(pos);
-		} 
-		while (c.isEstratta());
-	
-		c.setEstratta(true);
-		carteEstratte+=1;
+			do 
+			{
+				pos=r.nextInt(elencoCarte.size());
+				c=elencoCarte.get(pos);
+			} 
+			while (c.isEstratta());
+		
+			c.setEstratta(true);
+			carteEstratte++;
+		}
+		else
+		{
+			c=null;
+		}
+		
 		return c;
 	}
 	
